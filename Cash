@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <cs50.h>
+#include <math.h>
+
+int main(void) {
+    
+    int Cash = get_int("How Many Cents Would You Like : ");
+    int toonies, loonies, quarters, dimes, nickels, pennies;
+    
+    printf("You Will Receive : \n");
+    
+    toonies = (int)floor(Cash/200);
+    Cash = (Cash - (toonies*200));
+    printf("%i Toonies\n", toonies);
+    
+    loonies = (int)floor(Cash/100);
+    Cash = (Cash - (loonies*100));
+    printf("%i Loonies\n", loonies);
+    
+    quarters = (int)floor(Cash/25);
+    Cash = (Cash - (quarters*25));
+    printf("%i Quarters\n", quarters);
+    
+    dimes = (int)floor(Cash/10);
+    Cash = (Cash - (dimes*10));
+    printf("%i Dimes\n", dimes);
+    
+    nickels = (int)floor(Cash/5);
+    Cash = (Cash - (nickels*5));
+    printf("%i Nickels\n", nickels);
+    
+    pennies = (int)floor(Cash/1);
+    Cash = (Cash - (pennies*1));
+    printf("%i Pennies\n", pennies);
+    
+}

@@ -1,0 +1,131 @@
+#include <stdio.h>
+#include <cs50.h>
+#include <math.h>
+#include <string.h>
+
+int main(void) {
+    
+    long CreditCardNumber;
+    string cardType;
+    bool valid = false;
+    
+    // Let's Check How Many Digits.
+    int NumberCount = 0;
+    while (valid == false)
+    {
+        
+        CreditCardNumber = get_long("Number : ");
+        long CreditCopy = CreditCardNumber;
+        NumberCount = 0;
+        
+        while (CreditCopy)
+        {
+            NumberCount++;
+            CreditCopy /= 10;
+        }
+        
+        // Check To See If Number Is Valid (valid nums are 13, 15, or 16).
+        if (NumberCount == 13 || NumberCount == 15 || NumberCount == 16)
+        {
+            valid = true;
+        }
+        else
+        {
+            printf("INVALID\n");
+        }
+        
+    }
+    
+    // Now Let's Insert The Digits Into An Array.
+    // We Can Also Check The Card Type
+    int digits[NumberCount];
+    long CreditCopy = CreditCardNumber;
+    int firstNum, secondNum;
+    for (int i = 0; i<NumberCount; i++)
+    {
+        
+        if (i == NumberCount - 2)
+        {
+            secondNum = CreditCopy % 10;
+        }
+        else if (i == NumberCount - 1)
+        {
+            firstNum = CreditCopy % 10;
+        }
+        
+        digits[i] = (CreditCopy % 10);
+        CreditCopy /= 10;
+        
+    }
+    
+    // Check Card Type
+    if (firstNum == 4)
+    {
+        cardType = "VISA";
+    }
+    else if ((firstNum == 3 && secondNum == 4) || (firstNum == 3 && secondNum == 7))
+    {
+        cardType = "AMERICAN EXPRESS";
+    }
+    else if ((firstNum == 5 && secondNum == 1) || (firstNum == 5 && secondNum == 2) ||
+             (firstNum == 5 && secondNum == 3) || (firstNum == 5 && secondNum == 4) ||
+             (firstNum == 5 && secondNum == 5))
+    {
+        cardType = "MASTER CARD";
+    }
+    else { cardType = "INVALID"; }
+    
+    
+    if ( strcmp(cardType, "INVALID") != 0 ) {
+        
+        
+        // Multiply Every Other Digit By 2 And Add
+        // Digits Of The Result To a Variable (SumNumber).
+        bool toggle = false;
+        int SumNumber = 0;
+        for (int i = 0; i<NumberCount; i++)
+        {
+            if (toggle) {
+                digits[i] *= 2;
+                while (digits[i] > 0) {
+                    SumNumber += (digits[i] % 10);
+                    digits[i] /= 10;
+                }
+            }
+            toggle = !toggle;
+        }
+
+        // Add Every Digit That Was Not Originally Used To SumNumber.
+        toggle = true;
+        for (int i = 0; i<NumberCount; i++)
+        {
+            if (toggle) {
+                SumNumber += digits[i];
+            }
+            toggle = !toggle;
+        }
+
+        // Make SumNumber a Single Digit Number.
+        while (SumNumber >= 10)
+        {
+            SumNumber -= 10;
+        }
+
+        // If the Remaining Digit of SumNumber is 0
+        // Then The Card is Valid. Otherwise it is Invalid.
+        if (SumNumber == 0)
+        {
+            printf("%s\n", cardType);
+        } else
+        {
+            printf("INVALID\n");
+        }
+        
+        
+    }
+    else
+    {
+        printf("INVALID\n");
+    }
+    
+}

@@ -1,0 +1,34 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <time.h>
+
+int main(void)
+{
+    
+    int numsArraySize = 100;
+    int nums[numsArraySize];
+    int zeroCounter = 0;
+    
+    int seed = time(NULL);
+    srand(seed);
+    
+    int frequencySize = 100;
+    int frequencyTracker[frequencySize];
+    
+    for (int i = 0; i<numsArraySize; i++) {
+        nums[i] = rand()%100;
+        frequencyTracker[nums[i]]++;
+        if (nums[i] == 0) {
+            zeroCounter++;
+            printf("%i ", i);
+        }
+    }
+    
+    printf("\n\n");
+    
+    for (int i = 0; i<frequencySize; i++) {
+        printf("%i : %i\n", i, frequencyTracker[i]);
+    }
+    //printf("\n\nZeroes: %i\n", zeroCounter);
+    
+}

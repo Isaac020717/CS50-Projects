@@ -33,17 +33,33 @@ int main(void)
         frequencyTracker[nums[i]]++;
         if (nums[i] == 0) {
             zeroCounter++;
-            printf("%i ", i); // print each index where a zero occurs
+            //printf("%i ", i); // print each index where a zero occurs
         }
     }
     
+    // determine, and print the number that occurs the most often
+    // and the number that occurs the least often. Also print out
+    // how many times these numbers occur.
+    int smallest = 0; int largest = 0;
+    bool initialized = false;
+    for (int i = 0; i<frequencySize; i++) {
+        if (!initialized || frequencyTracker[i] < frequencyTracker[smallest]) {
+            smallest = i;
+        }
+        if (!initialized || frequencyTracker[i] > frequencyTracker[largest]) {
+            largest = i;
+            initialized = true;
+        }
+    }
+    printf("Smallest: %i occurred %i times\nLargest: %i occurred %i times\n", smallest, frequencyTracker[smallest], largest, frequencyTracker[largest]);
+    
     // spacing
-    printf("\n\n");
+//    printf("\n\n");
     
     // print off how many times each number occurs
-    for (int i = 0; i<frequencySize; i++) {
-        printf("%i : %i\n", i, frequencyTracker[i]);
-    }
-    printf("\nZeroes: %i\n", zeroCounter);
+//    for (int i = 0; i<frequencySize; i++) {
+//        printf("%i : %i\n", i, frequencyTracker[i]);
+//    }
+//    printf("\nZeroes: %i\n", zeroCounter); // print how many zeroes
     
 }

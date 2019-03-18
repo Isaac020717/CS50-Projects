@@ -1,0 +1,41 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(int argc, string argv[])
+{
+    
+    // Get the Original Word
+    string original = get_string("\nORIGINAL : ");
+    // Get the Key Word
+    string key = get_string("KEY : ");
+    
+    // Add Spacing Between Input and Output
+    printf("\n");
+    
+    // Print The ASCII of Each Original Character and its Corresponding Key Character
+    int j = 0;
+    for (int i = 0; i<strlen(original); i++)
+    {
+        printf("original: %i\n", original[i]);
+        printf("key: %i\n", key[j]);
+        if (j >= strlen(key)) j = 0;
+    }
+    
+    // Add Spacing Between Outputs
+    printf("\n");
+    
+    // Add the ASCII of Each Original Character And Its Corresponding Key Character
+    // Then Mod 127 to Keep Letters in The Letter Range
+    // Then Print the Encrypted Character
+    j = 0;
+    for (int i = 0; i<strlen(original); i++)
+    {
+        printf("%c", (original[i] + key[j])%127);
+        if (j >= strlen(key)) j = 0;
+    }
+    
+    // Move Your Cursor to a New Line
+    printf("\n");
+    
+}

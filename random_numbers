@@ -5,30 +5,45 @@
 int main(void)
 {
     
-    int numsArraySize = 100;
+    // setup the array of random numbers
+    int numsArraySize = 10000;
     int nums[numsArraySize];
     int zeroCounter = 0;
     
+    // make a time based seed for randomness
     int seed = time(NULL);
     srand(seed);
     
+    // setup the array of locations
     int frequencySize = 100;
     int frequencyTracker[frequencySize];
     
+    // Initialize Values
+    for (int i = 0; i<numsArraySize; i++) {
+        nums[i] = 0;
+    }
+    for (int i = 0; i<frequencySize; i++) {
+        frequencyTracker[i] = 0;
+    }
+    
+    // assign a random value to each number slot
+    // and record the how many times each number occurs
     for (int i = 0; i<numsArraySize; i++) {
         nums[i] = rand()%100;
         frequencyTracker[nums[i]]++;
         if (nums[i] == 0) {
             zeroCounter++;
-            printf("%i ", i);
+            printf("%i ", i); // print each index where a zero occurs
         }
     }
     
+    // spacing
     printf("\n\n");
     
+    // print off how many times each number occurs
     for (int i = 0; i<frequencySize; i++) {
         printf("%i : %i\n", i, frequencyTracker[i]);
     }
-    //printf("\n\nZeroes: %i\n", zeroCounter);
+    printf("\nZeroes: %i\n", zeroCounter);
     
 }

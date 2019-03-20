@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <cs50.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+
+
+int main(void) {
+    
+    // setup the array of random numbers
+    // also make a clone se we can store the original numbers
+    int arraySize = 10;
+    int randArray[arraySize];
+    int sortedArray[arraySize];
+    
+    // make a time based seed for randomness
+    int seed = time(NULL);
+    srand(seed);
+    
+    // Initialize Values. Then Generate Random Numbers.
+    for (int i = 0; i<arraySize; i++) {
+        randArray[i] = 0;
+        sortedArray[i] = 0;
+        randArray[i] = rand()%10;
+        sortedArray[i] = randArray[i];
+    }
+    
+    
+    // Sorting Variables
+    int SmallestNum = sortedArray[0];
+    int SmallestIndex = 0;
+    int startIndex = 0;
+    bool swap = false;
+    
+    // Sort Numbers
+    for (int a = 0; a<arraySize-1; a++) {
+        for (int i = startIndex; i<arraySize; i++) {
+            
+            if (sortedArray[i] < SmallestNum) {
+                swap = true;
+                SmallestNum = sortedArray[i];
+                SmallestIndex = i;
+            }
+            
+        }
+        
+        // check to see if a swap is required
+        if (swap) {
+            // Swap Numbers
+            sortedArray[SmallestIndex] = sortedArray[startIndex];
+            sortedArray[startIndex] = SmallestNum;
+        }
+        // set up variables for next cycle
+        startIndex++;
+        SmallestNum = sortedArray[startIndex];
+        swap = false;
+        
+    }
+    
+    // Print List of RandomNumbers
+    for (int i = 0; i<arraySize; i++) {
+        printf("%i, ", randArray[i]);
+    }
+    printf("\n"); // spacing
+    // Print List of SortedNumbers
+    for (int i = 0; i<arraySize; i++) {
+        printf("%i, ", sortedArray[i]);
+    }
+    printf("\n"); // spacing
+    
+}

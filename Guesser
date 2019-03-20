@@ -19,7 +19,7 @@ int main(void) {
     
     int upperBound = ( (int)pow(2, j) );
     int KeyArray[upperBound];
-    for (int i = 0; i<sizeof(KeyArray); i++) {
+    for (int i = 0; i<upperBound; i++) {
         KeyArray[i] = i;
     }
     
@@ -27,15 +27,17 @@ int main(void) {
     int floatingLowerBound = 0;
     while (!found) {
         if (key > ( (floatingUpperBound/2) + (floatingLowerBound/2) )) {
-            floatingLowerBound = floatingUpperBound/2;
+            floatingLowerBound = (floatingUpperBound/2) + (floatingLowerBound/2);
             steps++;
         } else if (key < ( (floatingUpperBound/2) + (floatingLowerBound/2) )) {
-            floatingUpperBound = floatingUpperBound/2;
+            floatingUpperBound = (floatingUpperBound/2) + (floatingLowerBound/2);
             steps++;
         } else { // number is directly in the middle of the array
             steps++;
             found = true;
         }
     }
+    
+    printf("Steps: %i\n", steps);
     
 }

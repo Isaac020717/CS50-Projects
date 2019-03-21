@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <cs50.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+
+
+int main(void) {
+    
+    // setup the array of random numbers
+    // also make a clone se we can store the original numbers
+    int arraySize = 49;
+    int randArray[arraySize];
+    int sortedArray[arraySize];
+    
+    // make a time based seed for randomness
+    int seed = time(NULL);
+    srand(seed);
+    
+    // Initialize Values. Then Generate Random Numbers.
+    for (int i = 0; i<arraySize; i++) {
+        randArray[i] = 0;
+        sortedArray[i] = 0;
+        randArray[i] = rand()%arraySize;
+        sortedArray[i] = randArray[i];
+    }
+    
+    
+    // Sorting Variables
+    int startIndex = 1;
+    int cIndex = startIndex;
+    int cValue;
+    // Apply Insertion Sorting Method
+    for (int i = startIndex; i<arraySize; i++) {
+        cIndex = i;
+        while (cIndex > 0) {
+            if (sortedArray[cIndex] < sortedArray[cIndex-1]) {
+                cValue = sortedArray[cIndex];
+                sortedArray[cIndex] = sortedArray[cIndex-1];
+                sortedArray[cIndex-1] = cValue;
+                cIndex--;
+            } else break;
+        }
+    }
+    
+    // Print List of RandomNumbers
+    printf("RANDOM: \n");
+    for (int i = 0; i<arraySize; i++) {
+        printf("%i, ", randArray[i]);
+    }
+    printf("\n\nSORTED: \n");
+    // Print List of SortedNumbers
+    for (int i = 0; i<arraySize; i++) {
+        printf("%i, ", sortedArray[i]);
+    }
+    printf("\n"); // spacing
+    
+}

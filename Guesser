@@ -22,7 +22,8 @@ int main(void) {
                 break;
             } else j++;
         }
-
+        
+        // setup the array with values matching their indexes
         int upperBound = ( (int)pow(2, j) );
         int KeyArray[upperBound];
         for (int i = 0; i<upperBound; i++)
@@ -34,6 +35,7 @@ int main(void) {
         int floatingLowerBound = 0;
         while (!found)
         {
+            // determine if the value is on above or below half of the array
             if (key > ( (floatingUpperBound/2) + (floatingLowerBound/2) ))
             {
                 floatingLowerBound = (floatingUpperBound/2) + (floatingLowerBound/2);

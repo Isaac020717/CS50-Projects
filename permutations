@@ -1,0 +1,35 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+
+int main(void) {
+    
+    int base = 5;
+    int baseArray[base];
+    
+    int singleNumPos = 0;
+    
+    // 
+    for (int i = 0; i < base; i++)
+    {
+        base[i] = i+1;
+    }
+    
+    // 
+    for (int i = 0; i < base; i++) // go through each index
+    {
+        for (int a = 0; a < base; a++) // perform procedure for the current index
+        {
+            for (int b = 0; b < base; b++) // print out possibilities
+            {
+                if (b != i)
+                {
+                    printf();
+                }
+            }
+        }
+    }
+    
+}

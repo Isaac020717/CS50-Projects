@@ -5,14 +5,22 @@
 
 void permute(int startNum);
 
+int base = 5;
+int currPerm[] = {0, 0, 0, 0, 0};
+int currIndex = 0;
+
 
 int main(void) {
     
-    int base = 5;
-    
-    for (int i = 1; i <= base; i++)
+    for (int i = 0; i < base; i++)
     {
-        permute(i);
+        for (int a = 0; a < (base-i) a++) {
+            if (i == 0) {
+                currPerm[i] = i;
+            } else {
+                currPerm[i] = a;
+            }
+        }
     }
     
 }
@@ -21,7 +29,6 @@ int main(void) {
 // permute function
 void permute(int startNum) {
     
-    printf("%i", );
+    printf("%i", startNum);
     
 }
-

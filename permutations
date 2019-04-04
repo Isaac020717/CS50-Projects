@@ -3,52 +3,45 @@
 #include <stdlib.h>
 #include <math.h>
 
-void permute(int startNum);
-
 int base = 5;
-int currPerm[] = {0, 0, 0, 0, 0};
-int currIndex = 0;
+int counter = 0;
 
 
 int main(void) {
     
     for (int a = 1; a <= base; a++) // column 1
     {
-        
-        printf("%i", a);
         for (int b = 1; b <= base; b++) // column 2
         {
             
-            if (b != a) {
-                printf("%i", b);
+            if (b != a)
+            {
                 for (int c = 1; c <= base; c++) // column 3
                 {
                     
-                    if ( (c != a) && (c != b) ) {
-                        printf("%i", c);
+                    if ( (c != a) && (c != b) )
+                    {
                         for (int d = 1; d <= base; d++) // column 4
                         {
                             
-                            if ( (d != a) && (d != b) && (d != c) ) {
-                                printf("%i", d);
+                            if ( (d != a) && (d != b) && (d != c) )
+                            {
                                 for (int e = 1; e <= base; e++) // column 5
                                 {
                                     
                                     if ( (e != a) && (e != b) && (e != c) && (e != d) ) {
-                                        printf("%i\n", e);
+                                        printf("%i, %i, %i, %i, %i\n", a, b, c, d, e);
+                                        counter++;
                                     }
-                                    
                                 }
                             }
-                            
                         }
                     }
-                    
                 }
             }
-            
         }
-        
     }
+    
+    printf("permutations: %i\n", counter);
     
 }

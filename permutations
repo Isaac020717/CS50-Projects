@@ -3,34 +3,43 @@
 #include <stdlib.h>
 #include <math.h>
 
+// number of values to permute
 int base = 5;
+// counter to keep track of permutations [should equal 120(5!)]
 int counter = 0;
 
 
 int main(void) {
     
-    for (int a = 1; a <= base; a++) // column 1
+    // column 1
+    for (int a = 1; a <= base; a++)
     {
-        for (int b = 1; b <= base; b++) // column 2
+        // column 2
+        for (int b = 1; b <= base; b++)
         {
             
             if (b != a)
             {
-                for (int c = 1; c <= base; c++) // column 3
+                // column 3
+                for (int c = 1; c <= base; c++)
                 {
                     
                     if ( (c != a) && (c != b) )
                     {
-                        for (int d = 1; d <= base; d++) // column 4
+                        // column 4
+                        for (int d = 1; d <= base; d++)
                         {
                             
                             if ( (d != a) && (d != b) && (d != c) )
                             {
-                                for (int e = 1; e <= base; e++) // column 5
+                                // column 5
+                                for (int e = 1; e <= base; e++)
                                 {
                                     
                                     if ( (e != a) && (e != b) && (e != c) && (e != d) ) {
+                                        // print permutation
                                         printf("%i, %i, %i, %i, %i\n", a, b, c, d, e);
+                                        // add to counter
                                         counter++;
                                     }
                                 }
@@ -42,6 +51,7 @@ int main(void) {
         }
     }
     
+    // print the number of permutations
     printf("permutations: %i\n", counter);
     
 }
